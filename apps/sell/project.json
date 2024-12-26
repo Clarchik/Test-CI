@@ -68,7 +68,11 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "eslintConfig": "apps/sell/eslint.config.mjs"
+      }
     },
     "test": {
       "executor": "@nx/vite:test",
