@@ -20,7 +20,7 @@ export const angularESLint = tseslint.config({
       ...globals.browser,
       ...globals.es2022
     },
-    parserOptions: { project: '**/tsconfig.*?.json' }
+    parserOptions: { project: '**/*.?/tsconfig.*?.json' }
   },
   processor: angular.processInlineTemplates,
   rules: {
