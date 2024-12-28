@@ -1,13 +1,13 @@
 import nx from '@nx/eslint-plugin';
 import tseslint from 'typescript-eslint';
-import { plugins } from './eslint-rules/plugins.config.mjs';
 import {
+  plugins,
   angularESLintTemplate,
   angularESLint,
   vitestESLint,
   storyBookESLint,
   nxLintBoundaries
-} from './eslint-rules/index.mjs';
+} from './tools/eslint-setup/index.mjs';
 
 export default tseslint.config(
   nx.configs['flat/base'],
