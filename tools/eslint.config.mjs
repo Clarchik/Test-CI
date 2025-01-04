@@ -7,6 +7,7 @@ export default tseslint.config(...baseConfig, {
     'functional/immutable-data': ['off'],
     'functional/no-loop-statements': ['off'],
     '@typescript-eslint/no-explicit-any': ['off'],
-    'no-extra-boolean-cast': ['off']
+    'no-extra-boolean-cast': ['off'],
+    'functional/prefer-immutable-types': 'off'
   }
 });

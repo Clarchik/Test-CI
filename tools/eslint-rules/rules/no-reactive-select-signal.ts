@@ -22,11 +22,11 @@
  * public readonly hasNotes = computed(() => !!this.store.selectSignal(getNotesCount)());
  */
 
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { ESLintUtils, type TSESTree } from '@typescript-eslint/utils';
 
 export const RULE_NAME = 'no-reactive-select-signal';
 
-export const rule = ESLintUtils.RuleCreator(() => __filename)({
+export const rule = ESLintUtils.RuleCreator((name) => `${name}`)({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -40,24 +40,22 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     }
   },
   defaultOptions: [],
-  create(context) {
-    return {
-      CallExpression(node) {
-        const isSelectSignal =
-          (node.callee as any).property?.name === 'selectSignal';
+  create: (context) => ({
+    CallExpression: (node) => {
+      const isSelectSignal =
+        (node.callee as TSESTree.MetaProperty).property.name === 'selectSignal';
 
-        if (!isSelectSignal) return;
+      if (!isSelectSignal) return;
 
-        const reactiveContextNames = ['computed', 'effect'];
-        let parent: any = node.parent;
-        while (!!parent) {
-          if (reactiveContextNames.includes(parent.callee?.name)) {
-            context.report({ node, messageId: 'noReactiveSelectSignal' });
-            break;
-          }
-          parent = parent.parent;
+      const reactiveContextNames = ['computed', 'effect'];
+      let parent: any = node.parent;
+      while (!!parent) {
+        if (reactiveContextNames.includes(parent.callee?.name)) {
+          context.report({ node, messageId: 'noReactiveSelectSignal' });
+          break;
         }
+        parent = parent.parent;
       }
-    };
-  }
+    }
+  })
 });

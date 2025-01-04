@@ -111,6 +111,7 @@ export const angularESLint = tseslint.config({
     'id-match': 'off',
     'no-underscore-dangle': 'off',
     'no-extra-semi': 'off',
-    '@nx/workspace-no-reactive-select-signal': 'error'
+    '@nx/workspace-no-reactive-select-signal': 'error',
+    '@nx/workspace-forbid-on-destroy': 'error'
   }
 });
