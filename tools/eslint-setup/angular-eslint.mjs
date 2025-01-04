@@ -20,28 +20,28 @@ export const angularESLint = tseslint.config({
       ...globals.browser,
       ...globals.es2022
     },
-    parserOptions: { project: '**/*.?/tsconfig.*?.json' }
+    parserOptions: { project: '**/tsconfig.*?.json' }
   },
   processor: angular.processInlineTemplates,
   rules: {
     complexity: ['error', { max: 6 }],
     'functional/no-let': ['error', { allowInFunctions: true }],
     'functional/prefer-property-signatures': 'error',
-    // 'functional/prefer-immutable-types': [
-    //   'error',
-    //   {
-    //     ignoreNamePattern: ['_', '#']
-    //   }
-    // ],
-    'functional/prefer-readonly-type': [
+    'functional/prefer-immutable-types': [
       'error',
       {
-        allowLocalMutation: true,
-        allowMutableReturnType: true,
-        ignoreCollections: true,
-        ignorePattern: ['_', 'mutable']
+        ignoreNamePattern: ['_', '#']
       }
     ],
+    // 'functional/prefer-readonly-type': [
+    //   'error',
+    //   {
+    //     allowLocalMutation: true,
+    //     allowMutableReturnType: true,
+    //     ignoreCollections: true,
+    //     ignorePattern: ['_', '#']
+    //   }
+    // ],
     'functional/immutable-data': [
       'error',
       {

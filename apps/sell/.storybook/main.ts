@@ -1,16 +1,16 @@
 import type { StorybookConfig } from '@storybook/angular';
 
-const config: StorybookConfig = {
+const config: Readonly<StorybookConfig> = {
   stories: ['../src/app/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
   framework: {
     name: '@storybook/angular',
     options: {
       builder: {
-        viteConfigPath: 'apps/sell/vite.config.mts',
-      },
-    },
-  },
+        viteConfigPath: 'apps/sell/vite.config.mts'
+      }
+    }
+  }
 };
 
 export default config;
