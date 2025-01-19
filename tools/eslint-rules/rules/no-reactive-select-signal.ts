@@ -43,7 +43,8 @@ export const rule = ESLintUtils.RuleCreator((name) => `${name}`)({
   create: (context) => ({
     CallExpression: (node) => {
       const isSelectSignal =
-        (node.callee as TSESTree.MetaProperty).property.name === 'selectSignal';
+        (node.callee as TSESTree.MetaProperty).property?.name ===
+        'selectSignal';
 
       if (!isSelectSignal) return;
 
