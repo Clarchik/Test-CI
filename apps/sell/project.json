@@ -7,56 +7,38 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
+      "executor": "@nx/vite:build",
+      "defaultConfiguration": "production",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "configFile": "apps/sell/vite.config.mts",
         "outputPath": "dist/apps/sell",
-        "index": "apps/sell/src/index.html",
-        "browser": "apps/sell/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/sell/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "apps/sell/public"
-          }
-        ],
-        "styles": ["apps/sell/src/styles.scss"],
-        "scripts": []
+        "tsConfig": "apps/sell/tsconfig.app.json"
       },
       "configurations": {
-        "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
-            }
-          ],
-          "outputHashing": "all"
-        },
         "development": {
-          "optimization": false,
-          "extractLicenses": false,
-          "sourceMap": true
+          "mode": "development",
+          "sourcemap": true
+        },
+        "production": {
+          "sourcemap": false,
+          "mode": "production"
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "sell:build",
+        "port": 4200
+      },
       "configurations": {
         "production": {
           "buildTarget": "sell:build:production"
         },
         "development": {
-          "buildTarget": "sell:build:development"
+          "buildTarget": "sell:build:development",
+          "hmr": true
         }
       },
       "defaultConfiguration": "development"

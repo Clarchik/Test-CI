@@ -30,6 +30,11 @@ export const angularESLint = tseslint.config({
     'functional/prefer-immutable-types': [
       'error',
       {
+        enforcement: 'None',
+        ignoreInferredTypes: true,
+        parameters: {
+          enforcement: 'ReadonlyDeep'
+        },
         ignoreNamePattern: ['_', '#']
       }
     ],
