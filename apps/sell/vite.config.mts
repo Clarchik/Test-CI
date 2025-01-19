@@ -9,10 +9,10 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/sell',
   plugins: [
     angular({
-      jit: false,
+      jit: false
     }),
     nxViteTsPaths(),
-    nxCopyAssetsPlugin(['*.md']),
+    nxCopyAssetsPlugin(['*.md'])
   ],
   // Uncomment this if you are using workers.
   // worker: {
@@ -27,12 +27,12 @@ export default defineConfig({
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/sell',
-      provider: 'istanbul',
+      provider: 'istanbul'
     },
     server: {
       deps: {
-        inline: ['@ngneat/spectator'],
-      },
-    },
-  },
+        inline: ['@ngneat/spectator']
+      }
+    }
+  }
 });
