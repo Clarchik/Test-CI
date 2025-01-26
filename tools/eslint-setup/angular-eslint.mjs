@@ -120,3 +120,20 @@ export const angularESLint = tseslint.config({
     '@nx/workspace-forbid-on-destroy': 'error'
   }
 });
+
+export const declarationsESLint = tseslint.config({
+  files: ['**/*.d.ts'],
+  extends: [...angular.configs.tsRecommended, ...tseslint.configs.recommended],
+  languageOptions: {
+    parser: typescriptParser,
+    globals: {
+      ...globals.browser,
+      ...globals.es2022
+    },
+    parserOptions: { project: '**/tsconfig.*?.json' }
+  },
+  processor: angular.processInlineTemplates,
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'off'
+  }
+});

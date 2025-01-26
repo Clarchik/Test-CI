@@ -6,7 +6,8 @@ import {
   angularESLint,
   vitestESLint,
   storyBookESLint,
-  nxLintBoundaries
+  nxLintBoundaries,
+  declarationsESLint
 } from './tools/eslint-setup/index.mjs';
 
 export default tseslint.config(
@@ -17,6 +18,7 @@ export default tseslint.config(
   plugins,
   angularESLint,
   angularESLintTemplate,
+  declarationsESLint,
   vitestESLint,
   storyBookESLint,
   nxLintBoundaries,
