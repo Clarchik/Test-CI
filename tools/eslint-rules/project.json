@@ -7,7 +7,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "eslintConfig": "tools/eslint.config.cjs"
+        "eslintConfig": "tools/eslint.config.mjs"
       }
     }
   }

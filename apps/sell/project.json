@@ -53,7 +53,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "eslintConfig": "apps/sell/eslint.config.cjs"
+        "eslintConfig": "apps/sell/eslint.config.mjs"
       }
     },
     "test": {
