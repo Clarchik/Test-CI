@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AppComponent } from './app.component';
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { within } from '@storybook/test';
+import { expect } from '@storybook/test';
 
 const meta: Meta<AppComponent> = {
   component: AppComponent,
-  title: 'AppComponent',
+  title: 'AppComponent'
 };
 export default meta;
 type Story = StoryObj<AppComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {}
 };
 
 export const Heading: Story = {
@@ -19,5 +19,5 @@ export const Heading: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/1ff works!/gi)).toBeTruthy();
-  },
+  }
 };
