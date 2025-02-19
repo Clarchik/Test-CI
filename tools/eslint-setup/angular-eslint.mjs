@@ -38,15 +38,6 @@ export const angularESLint = tseslint.config({
         ignoreNamePattern: ['_', '#']
       }
     ],
-    // 'functional/prefer-readonly-type': [
-    //   'error',
-    //   {
-    //     allowLocalMutation: true,
-    //     allowMutableReturnType: true,
-    //     ignoreCollections: true,
-    //     ignorePattern: ['_', '#']
-    //   }
-    // ],
     'functional/immutable-data': [
       'error',
       {

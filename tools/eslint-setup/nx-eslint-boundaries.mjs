@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint';
 
 export const nxLintBoundaries = tseslint.config({
-  files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+  files: ['**/*.ts', '**/*.js'],
   rules: {
     '@nx/enforce-module-boundaries': [
       'error',
@@ -11,10 +11,10 @@ export const nxLintBoundaries = tseslint.config({
         depConstraints: [
           {
             sourceTag: '*',
-            onlyDependOnLibsWithTags: ['*'],
-          },
-        ],
-      },
-    ],
-  },
+            onlyDependOnLibsWithTags: ['*']
+          }
+        ]
+      }
+    ]
+  }
 });
