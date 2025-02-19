@@ -4,9 +4,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start:client": "nx serve trello-client"
+    "start:client": "nx serve trello-client",
+    "release": "tsx scripts/release.ts"
   },
-  "private": true,
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~1.13.1",
     "@analogjs/vitest-angular": "~1.13.1",
