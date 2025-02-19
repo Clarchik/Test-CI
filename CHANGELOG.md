@@ -1,3 +1,18 @@
+## [0.0.2](https://github.com/Clarchik/Test-release/compare/v0.0.1...v0.0.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* **deps:** add packages ([6e24627](https://github.com/Clarchik/Test-release/commit/6e24627a989c57d9cac1b5edf28f83e0f633e400))
+* move packages ([#2](https://github.com/Clarchik/Test-release/issues/2)) ([4348ed1](https://github.com/Clarchik/Test-release/commit/4348ed1b8b13880cf2201424490a04ae699d0c66))
+
+
+### Features
+
+* add new types ([#1](https://github.com/Clarchik/Test-release/issues/1)) ([2457c18](https://github.com/Clarchik/Test-release/commit/2457c18fabea0c5232fca10144fd0ba719e045f1))
+
+
+
 ## [0.0.1](https://github.com/Clarchik/Test-tag/compare/v0.0.0...v0.0.1) (2025-02-19)
 
 

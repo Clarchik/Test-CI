@@ -22,8 +22,8 @@ release({
       // '--commit-path',
       // '.'
     ];
-    await run('npx', changelogArgs);
+    await run('npx', changelogArgs, { cwd: '.' });
     // conventional-changelog generates links with short commit hashes, extend them to full hashes
-    extendCommitHash(`CHANGELOG.md`);
+    // extendCommitHash(`CHANGELOG.md`);
   }
 });
