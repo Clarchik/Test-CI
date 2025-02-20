@@ -58,7 +58,7 @@ jobs:
             node_version: 22
       fail-fast: false
 
-    name: 'Test & Build Build&Test: ${{ matrix.os }}'
+    name: 'Test & Build: ${{ matrix.os }}'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -118,12 +118,13 @@ jobs:
 
       - name: Install deps
         run: pnpm install
-      # TODO - uncommenct when lint fixed
-      # - name: Lint
-      #   run: pnpm run lint
 
       - name: Check formatting
         run: pnpm run prettier
+
+      # TODO - uncommenct when lint fixed
+      # - name: Lint
+      #   run: pnpm run lint
 
       # From https://github.com/rhysd/actionlint/blob/main/docs/usage.md#use-actionlint-on-github-actions
       - name: Check workflow files
