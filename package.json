@@ -4,8 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "nx build trello-client",
-    "lint": "nx run-many --target=lint --exclude=eslint-custom-rules --skip-nx-cache",
+    "build": "nx run-many --target build --all --parallel=1 --skip-nx-cache",
+    "lint": "nx run-many --target lint --exclude=eslint-custom-rules --skip-nx-cache",
     "start:client": "nx serve trello-client",
     "release": "tsx scripts/release.ts"
   },
