@@ -3,7 +3,7 @@ name: CI
 env:
   NODE_OPTIONS: --max-old-space-size=6144
   FETCH_DEPTH: 50
-  node-version: 22
+  NODE_VERSION: 22
   TESTS_TIMEOUT: 20
   lint-timeout: 10
 
@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: 20
+    timeout-minutes: ${{ env.TESTS_TIMEOUT }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
