@@ -5,7 +5,7 @@ env:
   FETCH_DEPTH: 50
   NODE_VERSION: 22
   TESTS_TIMEOUT: 20
-  lint-timeout: 10
+  LINT_TIMEOUT: 10
 
 permissions: {}
 
@@ -30,7 +30,7 @@ jobs:
       - name: Chekout
         uses: actions/checkout@v4
         with:
-          fetch-depth: ${{ env.FETCH_DEPTHs }}
+          fetch-depth: 50
 
       - name: Get changed files
         id: changed-files
@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: 20
+    timeout-minutes: '20'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
