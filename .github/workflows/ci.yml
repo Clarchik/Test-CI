@@ -4,7 +4,7 @@ env:
   NODE_OPTIONS: --max-old-space-size=6144
   fetch-depth: 50
   node-version: 22
-  tests-timeout: 20
+  TESTS_TIMEOUT: 20
   lint-timeout: 10
 
 permissions: {}
@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: $tests-timeout
+    timeout-minutes: $TESTS_TIMEOUT
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
