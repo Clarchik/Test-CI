@@ -30,7 +30,7 @@ jobs:
       - name: Chekout
         uses: actions/checkout@v4
         with:
-          fetch-depth: ${{ env.FETCH_DEPTH }}
+          fetch-depth: ${{ env.FETCH_DEPTHs }}
 
       - name: Get changed files
         id: changed-files
@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: ${{ env.TESTS_TIMEOUT }}
+    timeout-minutes: ${{ env.FETCH_DEPTH }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
