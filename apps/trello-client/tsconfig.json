@@ -12,6 +12,7 @@
     {
       "path": "./tsconfig.spec.json"
     }
+    // TODO uncomment when storybook added
     // {
     //   "path": "./.storybook/tsconfig.json"
     // }
