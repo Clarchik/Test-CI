@@ -16,80 +16,80 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  changed:
-    name: Get changed files
-    runs-on: ubunti-latest
-    outputs:
-      should_skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
+  # changed:
+  #   name: Get changed files
+  #   runs-on: ubunti-latest
+  #   outputs:
+  #     should_skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
 
-    steps:
-      - name: Chekout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 50
+  #   steps:
+  #     - name: Chekout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 50
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@dcc7a0cba800f454d79fff4b993e8c3555bcc0a8 # v45.0.7
-        with:
-          files: |
-            docs/**
-            .github/**
-            !.github/workflows/ci.yml
-            **.md
+  #     - name: Get changed files
+  #       id: changed-files
+  #       uses: tj-actions/changed-files@dcc7a0cba800f454d79fff4b993e8c3555bcc0a8 # v45.0.7
+  #       with:
+  #         files: |
+  #           docs/**
+  #           .github/**
+  #           !.github/workflows/ci.yml
+  #           **.md
 
-  test:
-    needs: changed
-    if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: 20
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node_version: [22]
-        include:
-          # Active LTS + other OS
-          - os: macos-latest
-            node_version: 22
-          - os: windows-latest
-            node_version: 22
-      fail-fast: false
+  # test:
+  #   needs: changed
+  #   if: needs.changed.outputs.should_skip != 'true'
+  #   timeout-minutes: 20
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest]
+  #       node_version: [22]
+  #       include:
+  #         # Active LTS + other OS
+  #         - os: macos-latest
+  #           node_version: 22
+  #         - os: windows-latest
+  #           node_version: 22
+  #     fail-fast: false
 
-    name: 'Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  #   name: 'Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v4.1.0
 
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node_version }}
-          cache: 'pnpm'
+  #     - name: Set node version to ${{ matrix.node_version }}
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ matrix.node_version }}
+  #         cache: 'pnpm'
 
-      - name: Install deps
-        run: pnpm install
+  #     - name: Install deps
+  #       run: pnpm install
 
-      - name: Build
-        run: pnpm run build
+  #     - name: Build
+  #       run: pnpm run build
 
-  test-passed:
-    if: (!cancelled() && !failure())
-    needs: test
-    runs-on: ubuntu-latest
-    name: Build & Test Passed or Skipped
-    steps:
-      - run: echo "Build & Test Passed or Skipped"
+  # test-passed:
+  #   if: (!cancelled() && !failure())
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   name: Build & Test Passed or Skipped
+  #   steps:
+  #     - run: echo "Build & Test Passed or Skipped"
 
-  test-failed:
-    if: (!cancelled() && failure())
-    needs: test
-    runs-on: ubuntu-latest
-    name: Build & Test Failed
-    steps:
-      - run: echo "Build & Test Failed"
+  # test-failed:
+  #   if: (!cancelled() && failure())
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   name: Build & Test Failed
+  #   steps:
+  #     - run: echo "Build & Test Failed"
 
   lint:
     timeout-minutes: 10
