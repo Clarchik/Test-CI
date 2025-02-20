@@ -30,7 +30,7 @@ jobs:
       - name: Chekout
         uses: actions/checkout@v4
         with:
-          fetch-depth: $fetch-depth
+          fetch-depth: 50
 
       - name: Get changed files
         id: changed-files
@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: "$TESTS_TIMEOUT"
+    timeout-minutes: 2p
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -96,7 +96,7 @@ jobs:
       - run: echo "Build & Test Failed"
 
   lint:
-    timeout-minutes: $lint-timeout
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     name: 'Lint'
     steps:
@@ -105,10 +105,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0
 
-      - name: Set node version to $node-version
+      - name: Set node version to 22
         uses: actions/setup-node@v4
         with:
-          node-version: $node-version
+          node-version: 22
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
