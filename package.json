@@ -4,6 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "build": "nx build trello-client",
+    "lint": "nx lunt trello-client",
     "start:client": "nx serve trello-client",
     "release": "tsx scripts/release.ts"
   },

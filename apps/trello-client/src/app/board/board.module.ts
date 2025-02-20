@@ -9,11 +9,8 @@ import { TopbarComponent } from '../shared/components/topbar/topbar.component';
 import { InlineFormComponent } from '../shared/components/inline-form/inline-form.component';
 import { TasksService } from '../shared/services/tasks.service';
 
-
 @NgModule({
-  declarations: [
-    BoardComponent
-  ],
+  declarations: [BoardComponent],
   imports: [
     CommonModule,
     BoardRoutingModule,
@@ -23,4 +20,4 @@ import { TasksService } from '../shared/services/tasks.service';
   ],
   providers: [BoardService, ColumnsService, TasksService]
 })
-export class BoardModule { }
+export class BoardModule {}

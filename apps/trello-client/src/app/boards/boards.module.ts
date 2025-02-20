@@ -9,11 +9,8 @@ import { BoardsEmptyComponent } from './components/boards-empty/boards-empty.com
 import { BoardCardComponent } from './components/boards/board-card/board-card.component';
 import { BoardsStore } from './data-access/boards.store';
 
-
 @NgModule({
-  declarations: [
-    BoardsComponent
-  ],
+  declarations: [BoardsComponent],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
@@ -22,9 +19,6 @@ import { BoardsStore } from './data-access/boards.store';
     BoardsEmptyComponent,
     BoardCardComponent
   ],
-  providers: [
-    BoardsService,
-    BoardsStore
-  ]
+  providers: [BoardsService, BoardsStore]
 })
-export class BoardsModule { }
+export class BoardsModule {}

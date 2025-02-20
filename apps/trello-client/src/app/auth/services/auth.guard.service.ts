@@ -1,17 +1,9 @@
 import { inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  type CanActivateFn,
-  Router,
-  RouterStateSnapshot
-} from '@angular/router';
+import { type CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { map } from 'rxjs';
 
-export const HOME_GUARD: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const HOME_GUARD: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router: Router = inject(Router);
 
@@ -27,10 +19,7 @@ export const HOME_GUARD: CanActivateFn = (
   );
 };
 
-export const AUTH_GUARD: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const AUTH_GUARD: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router: Router = inject(Router);
 

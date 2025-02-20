@@ -15,8 +15,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
-
-
 jobs:
   changed:
     name: Get changed files
@@ -40,7 +38,92 @@ jobs:
             !.github/workflows/ci.yml
             **.md
 
+  test:
+    needs: changed
+    if: needs.changed.outputs.should_skip != 'true'
+    timeout-minutes: 20
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [22]
+        include:
+          # Active LTS + other OS
+          - os: macos-latest
+            node_version: 22
+          - os: windows-latest
+            node_version: 22
+      fail-fast: false
 
+    name: 'Build&Test: node-${{ matrix.node_version }}, ${{ matrix.os }}'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+  test-passed:
+    if: (!cancelled() && !failure())
+    needs: test
+    runs-on: ubuntu-latest
+    name: Build & Test Passed or Skipped
+    steps:
+      - run: echo "Build & Test Passed or Skipped"
+
+  test-failed:
+    if: (!cancelled() && failure())
+    needs: test
+    runs-on: ubuntu-latest
+    name: Build & Test Failed
+    steps:
+      - run: echo "Build & Test Failed"
+
+  lint:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    name: 'Lint: node-22, ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Set node version to 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Check formatting
+        run: pnpm prettier --write --log-level=warn . && git diff --exit-code
+
+      # From https://github.com/rhysd/actionlint/blob/main/docs/usage.md#use-actionlint-on-github-actions
+      - name: Check workflow files
+        run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color -shellcheck=""
 
 # jobs:
 #   main:
@@ -50,19 +133,16 @@ jobs:
 #         with:
 #           fetch-depth: 0
 
-
-
 #       # This enables task distribution via Nx Cloud
 #       # Run this command as early as possible, before dependencies are installed
 #       # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
 #       # Uncomment this line to enable task distribution
 #       # - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
-
 #       # Cache node_modules
 #       - uses: actions/setup-node@v4
 #         with:
-#           node-version: 20
+#           node-version: 22
 #           cache: 'npm'
 
 #       - run: npm ci --legacy-peer-deps

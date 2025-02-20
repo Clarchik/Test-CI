@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 export const vitestESLint = tseslint.config({
   files: ['**/*.spec.ts'],
   plugins: {
-    vitest,
+    vitest
   },
   rules: {
     ...vitest.configs.all.rules,
@@ -16,7 +16,7 @@ export const vitestESLint = tseslint.config({
     '@typescript-eslint/no-empty-function': 'off',
     '@nx/enforce-module-boundaries': [
       'error',
-      { enforceBuildableLibDependency: false },
+      { enforceBuildableLibDependency: false }
     ],
     'vitest/prefer-lowercase-title': 'error',
     'vitest/max-nested-describe': 'error',
@@ -28,8 +28,8 @@ export const vitestESLint = tseslint.config({
     'vitest/consistent-test-filename': [
       'error',
       {
-        pattern: '.*.spec.ts',
-      },
+        pattern: '.*.spec.ts'
+      }
     ],
     'vitest/max-expects': 'error',
     'vitest/no-alias-methods': 'error',
@@ -84,6 +84,6 @@ export const vitestESLint = tseslint.config({
     'vitest/valid-expect': 'error',
     'vitest/valid-describe-callback': 'error',
     'vitest/require-local-test-context-for-concurrent-snapshots': 'error',
-    'vitest/no-import-node-test': 'error',
-  },
+    'vitest/no-import-node-test': 'error'
+  }
 });

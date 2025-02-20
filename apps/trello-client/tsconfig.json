@@ -11,10 +11,10 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "./.storybook/tsconfig.json"
     }
+    // {
+    //   "path": "./.storybook/tsconfig.json"
+    // }
   ],
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,

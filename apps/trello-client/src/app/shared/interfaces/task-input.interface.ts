@@ -1,5 +1,5 @@
 export interface TaskInput {
-    title: string;
-    boardId: string;
-    columnId: string;
+  title: string;
+  boardId: string;
+  columnId: string;
 }

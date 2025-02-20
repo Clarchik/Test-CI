@@ -7,9 +7,8 @@
   top: 0;
   left: 0;
   z-index: var(--z-index998);
-  animation: topFadeIn 500ms ease-in-out forwards; // @TODO check why twice 
+  animation: topFadeIn 500ms ease-in-out forwards; // @TODO check why twice
 }
-
 
 .topbar {
   @include mixins.flex-builder(flex-end, center);

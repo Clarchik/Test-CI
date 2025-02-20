@@ -9,8 +9,7 @@ describe('BoardsEmptyComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BoardsEmptyComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BoardsEmptyComponent);
     component = fixture.componentInstance;

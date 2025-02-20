@@ -1,4 +1,4 @@
 export enum EAuthSubmitAction {
-    SIGN_UP,
-    SIGN_IN
+  SIGN_UP,
+  SIGN_IN
 }

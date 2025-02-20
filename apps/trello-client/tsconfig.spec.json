@@ -8,14 +8,13 @@
       "vite/client",
       "node",
       "vitest"
-    ],
-    "composite": true
+    ]
   },
+  "files": ["src/test-setup.ts"],
   "include": [
     "vitest.config.mts",
     "src/**/*.spec.ts",
     "src/**/*.spec.js",
     "src/**/*.d.ts"
-  ],
-  "files": ["src/test-setup.ts"]
+  ]
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   provideHttpClient,
-  withInterceptorsFromDi,
+  withInterceptorsFromDi
 } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -12,6 +12,6 @@ import { AuthComponent } from './auth.component';
 @NgModule({
   declarations: [AuthComponent],
   imports: [CommonModule, ReactiveFormsModule, AuthRoutingModule, RouterModule],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+  providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class AuthModule {}

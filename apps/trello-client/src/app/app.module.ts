@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
-  withInterceptorsFromDi,
+  withInterceptorsFromDi
 } from '@angular/common/http';
 import { AuthInterceptor } from './auth/services/auth.interceptor.service';
 import { SocketService } from './shared/services/socket.service';
@@ -18,24 +18,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    TopbarComponent,
-    SidebarComponent,
-  ],
+  imports: [BrowserModule, AppRoutingModule, TopbarComponent, SidebarComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true,
+      multi: true
     },
     provideLottieOptions({
-      player: () => player,
+      player: () => player
     }),
     SocketService,
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimationsAsync(),
-  ],
+    provideAnimationsAsync()
+  ]
 })
 export class AppModule {}
