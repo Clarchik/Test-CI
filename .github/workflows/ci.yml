@@ -53,9 +53,9 @@ jobs:
         include:
           # Active LTS + other OS
           - os: macos-latest
-            node_version: ${{ matrix.node_version }}
+            node_version: 22
           - os: windows-latest
-            node_version: ${{ matrix.node_version }}
+            node_version: 22
       fail-fast: false
 
     name: 'Test & Build Build&Test: ${{ matrix.os }}'
