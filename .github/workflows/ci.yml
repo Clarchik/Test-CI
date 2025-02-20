@@ -53,9 +53,9 @@ jobs:
         include:
           # Active LTS + other OS
           - os: macos-latest
-            node_version: 22
+            node_version: ${{ env.NODE_VERSION }}
           - os: windows-latest
-            node_version: 22
+            node_version: ${{ env.NODE_VERSION }}
       fail-fast: false
 
     name: 'Test & Build Build&Test: ${{ matrix.os }}'
@@ -105,7 +105,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0
 
-      - name: Set node version to ${{ env.NODE_VERSION }} 1
+      - name: Set node version to ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
