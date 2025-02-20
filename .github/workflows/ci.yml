@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [${{vars.node-version}}]
+        node_version: ['${{vars.node-version}}']
         include:
           # Active LTS + other OS
           - os: macos-latest
