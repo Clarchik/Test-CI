@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nx build trello-client",
-    "lint": "npx eslint",
+    "lint": "nx run-many --target=lint --exclude=eslint-custom-rules --skip-nx-cache",
     "start:client": "nx serve trello-client",
     "release": "tsx scripts/release.ts"
   },
