@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: 2p
+    timeout-minutes: 20
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
