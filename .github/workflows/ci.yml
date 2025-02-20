@@ -2,7 +2,7 @@ name: CI
 
 env:
   NODE_OPTIONS: --max-old-space-size=6144
-  fetch-depth: 50
+  FETCH_DEPTH: 50
   node-version: 22
   TESTS_TIMEOUT: 20
   lint-timeout: 10
@@ -30,7 +30,7 @@ jobs:
       - name: Chekout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 50
+          fetch-depth: ${{ env.FETCH_DEPTH }}
 
       - name: Get changed files
         id: changed-files

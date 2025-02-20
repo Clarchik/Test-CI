@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "test": "nx run-many --target test --all --parallel=1 --skip-nx-cache",
     "build": "nx run-many --target build --all --parallel=1 --skip-nx-cache",
     "lint": "nx run-many --target lint --exclude=eslint-custom-rules --skip-nx-cache",
     "prettier": "prettier --write --log-level=warn . && git diff --exit-code",
