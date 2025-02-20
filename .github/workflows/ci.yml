@@ -44,7 +44,7 @@ jobs:
   test:
     needs: changed
     if: needs.changed.outputs.should_skip != 'true'
-    timeout-minutes: $TESTS_TIMEOUT
+    timeout-minutes: ${{env.TESTS_TIMEOUT}}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
