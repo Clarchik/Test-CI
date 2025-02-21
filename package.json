@@ -4,9 +4,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "nx affected --target test --parallel=1 --skip-nx-cache",
-    "build": "nx affected --target build --parallel=1 --skip-nx-cache",
-    "lint": "nx affected --target lint --parallel=1 --skip-nx-cache --exclude=eslint-custom-rules",
+    "test": "nx run-many --target test --all --parallel=1 --skip-nx-cache",
+    "build": "nx run-many --target build --all --parallel=1 --skip-nx-cache",
+    "lint": "nx run-many --target lint --all --parallel=1 --skip-nx-cache --exclude=eslint-custom-rules",
     "prettier": "prettier -c -w --log-level=warn . && git diff --exit-code",
     "start:client": "nx serve trello-client",
     "release": "tsx scripts/release.ts"
