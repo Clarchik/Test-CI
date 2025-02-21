@@ -9,7 +9,8 @@
     "lint": "nx run-many --target lint --all --parallel=1 --skip-nx-cache --exclude=eslint-custom-rules",
     "prettier": "prettier -c -w --log-level=warn . && git diff --exit-code",
     "start:client": "nx serve trello-client",
-    "release": "tsx scripts/release.ts"
+    "release": "tsx scripts/release.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~1.13.1",
@@ -23,6 +24,8 @@
     "@angular/cli": "~19.1.7",
     "@angular/compiler-cli": "~19.1.6",
     "@angular/language-service": "~19.1.6",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@eslint/js": "^9.20.0",
     "@ngneat/spectator": "^19.4.1",
     "@nx/angular": "20.4.4",
@@ -65,6 +68,7 @@
     "nx": "20.4.4",
     "picocolors": "^1.1.1",
     "prettier": "^3.5.1",
+    "pretty-quick": "^4.0.0",
     "storybook": "^8.5.7",
     "ts-node": "10.9.2",
     "tslib": "^2.8.1",
