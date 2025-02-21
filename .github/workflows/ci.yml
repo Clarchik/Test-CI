@@ -6,6 +6,7 @@ env:
   NODE_VERSION: 22
   TESTS_TIMEOUT: 20
   LINT_TIMEOUT: 10
+  HUSKY: 0
 
 permissions: {}
 
