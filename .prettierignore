@@ -6,3 +6,4 @@
 .angular
 CHANGELOG.md
 .github
+pnpm-lock.yaml
