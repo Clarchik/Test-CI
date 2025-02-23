@@ -1,6 +1,6 @@
 {
   "name": "angular-monorepo-vite-and-vitest",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -9,7 +9,8 @@
     "lint": "nx run-many --target lint --all --parallel=1 --skip-nx-cache --exclude=eslint-custom-rules",
     "prettier": "prettier -c -w --log-level=warn . && git diff --exit-code",
     "start:client": "nx serve trello-client",
-    "release": "tsx scripts/release.ts"
+    "release": "tsx scripts/release.ts",
+    "prepack": "npx husky || true"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~1.13.1",
@@ -63,6 +64,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "execa": "^9.5.2",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
     "jsdom": "~26.0.0",
     "nx": "20.4.4",
     "picocolors": "^1.1.1",
