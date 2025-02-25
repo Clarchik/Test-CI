@@ -1,8 +1,8 @@
-import { Component, type OnInit, inject } from '@angular/core';
-import { AuthService } from './auth/services/auth.service';
-import { type CurrentUser } from './auth/interfaces/current-user.interface';
-import { SocketService } from './shared/services/socket.service';
+import { Component, inject, type OnInit } from '@angular/core';
 import { take } from 'rxjs';
+import { type CurrentUser } from './auth/interfaces/current-user.interface';
+import { AuthService } from './auth/services/auth.service';
+import { SocketService } from './shared/services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   private readonly socketService = inject(SocketService);
 
   ngOnInit(): void {
+    console.log('123');
     this.authService
       .getCurrentUser()
       .pipe(take(1))
