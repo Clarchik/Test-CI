@@ -120,6 +120,9 @@ jobs:
       - name: Install deps
         run: pnpm install
 
+      - name: Print pnpn version
+        run: pnpm --version
+
       - name: Check formatting
         run: pnpm run prettier
 
