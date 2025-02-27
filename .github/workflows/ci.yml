@@ -38,6 +38,7 @@ jobs:
         uses: tj-actions/changed-files@dcc7a0cba800f454d79fff4b993e8c3555bcc0a8 # v45.0.7
         with:
           files: |
+            docs/**
             .github/**
             !.github/workflows/ci.yml
             **.md
@@ -102,6 +103,8 @@ jobs:
 
   lint:
     timeout-minutes: 10
+    needs: changed
+    if: needs.changed.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     name: 'Lint'
     steps:
